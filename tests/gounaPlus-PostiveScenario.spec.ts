@@ -1,31 +1,20 @@
-import {test} from "@playwright/test";
-import * as fs from 'fs';
+import {test} from "./fixtures/sharedFixture.ts";
 const { urls } = require('../config/urls.ts');
 import QualifiedLead from '../Pages/gounaPlus/qualified-lead.ts';
+import { navBarSelectors } from "../Pages/common/commonSelectors.ts";
 
 
-let cookies: any;
 let qualifiedLead: QualifiedLead;
 
-// Load cookies from 'auth.json' before running tests
-test.beforeAll(() => {
-  const cookiesFilePath = './auth.json';
-  if (fs.existsSync(cookiesFilePath)) {
-    const cookiesJSON = fs.readFileSync(cookiesFilePath, 'utf-8');
-    cookies = JSON.parse(cookiesJSON);
-  } else {
-    throw new Error('auth.json not found. Please ensure it exists.');
-  }
-});
 
 test.beforeEach( async({page}) => {
-    if (cookies) {
-        await page.context().addCookies(cookies.cookies);
-      } 
-    // Load the session storage (cookies, tokens) from the auth file
+    
     await page.goto(urls.gounaPlus);
     //qualified lead or parent lead
     qualifiedLead = new QualifiedLead(page);
+
+    await navBarSelectors.copilotTab(page).click();
+
 })
 
 test.describe('Validate that user can generate quote', () => {
