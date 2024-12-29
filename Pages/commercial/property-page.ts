@@ -24,7 +24,7 @@ export class PropertyPage {
         this.unitType = this.page.locator('[data-id="inn_type.fieldControl-option-set-select"]');
         this.unitName = this.page.getByLabel('Name');
         this.unitId = this.page.locator( '[data-id="inn_id.fieldControl-text-box-text"]');
-        this.unitHierarchy = this.page.getByLabel('Hierarchy, Lookup');
+        this.unitHierarchy = this.page.locator( '[data-id="inn_hierarchy.fieldControl-LookupResultsDropdown_inn_hierarchy_textInputBox_with_filter_new"]');
         this.validFrom = this.page.getByLabel('Date of Valid From');
         this.validTo = this.page.getByLabel('Date of Valid To');
         this.priceList = this.page.getByLabel('Price List, Lookup');
@@ -40,6 +40,14 @@ export class PropertyPage {
         for(let i=0; i<noOfItem; i++){
             await this.page.keyboard.press('ArrowDown');
         }
+        await this.page.keyboard.press('Enter');
+
+    }
+
+    async selectItemFromLookup(locator:Locator, itemName:string){
+        await locator.click();
+        await locator.fill(itemName);
+        await this.page.keyboard.press('ArrowDown');
         await this.page.keyboard.press('Enter');
 
     }

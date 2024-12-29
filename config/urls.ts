@@ -5,6 +5,7 @@ const urls = {
     dashboardPage: 'https://crm-dynamics.com/dashboard',
     // Commercial URLs
     property:'https://odh.crm4.dynamics.com/main.aspx?appid=119ad62d-3c9f-4b09-ad48-c4d9e90bed4b&newWindow=true&pagetype=entityrecord&etn=inn_units',
+    oWestNewCase: 'https://sbodre.crm4.dynamics.com/main.aspx?appid=a5bafb1b-14a9-ef11-b8e8-6045bd99e201&newWindow=true&pagetype=entityrecord&etn=incident'
     
   };
 
