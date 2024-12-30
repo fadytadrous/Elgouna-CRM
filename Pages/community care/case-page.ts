@@ -11,8 +11,9 @@ export class CasePage {
     readonly description: Locator;
     readonly customer: Locator;
     readonly unitId: Locator;
-    
-    
+    readonly saveBtn: Locator;
+    readonly slaTab: Locator;
+    readonly slaItem: Locator;
     
     //constructor
     constructor(page: Page){
@@ -21,7 +22,12 @@ export class CasePage {
         this.requestType = this.page.locator('[data-id="ohd_requesttype.fieldControl-option-set-select"]');
         this.unitId = this.page.locator( '[data-id="ohd_unitid.fieldControl-LookupResultsDropdown_ohd_unitid_textInputBox_with_filter_new"]');
         this.summaryTab = this.page.getByLabel('Summary');
-       
+        this.slaTab = this.page.getByLabel('SLA');
+        this.caseCategory = this.page.locator('[data-id="odh_casecategory.fieldControl-LookupResultsDropdown_odh_casecategory_textInputBox_with_filter_new"]');
+        this.caseSubCategory = this.page.locator('[data-id="odh_casesubcategory.fieldControl-LookupResultsDropdown_odh_casesubcategory_textInputBox_with_filter_new"]');
+        this.description = this.page.locator('[data-id="description.fieldControl-text-box-text"]');
+        this.saveBtn = this.page.getByLabel('Save (CTRL+S)');
+        this.slaItem = this.page.locator('a.ms-Link').nth(1);
     }
 
     //methods
@@ -35,12 +41,18 @@ export class CasePage {
     }
 
     async selectItemFromLookup(locator:Locator, itemName:string){
-        await locator.click();
-        await locator.fill(itemName);
-        await this.page.keyboard.press('ArrowDown');
+        this.fillItem(locator, itemName);
+        await this.page.keyboard.press('ArrowDown',{ delay: 5000 });
         await this.page.keyboard.press('Enter');
 
     }
+
+    async fillItem(locator:Locator, text:string){
+        
+        await locator.click();
+        await locator.fill(text);
+    }
+
 
 }
 export default CasePage;

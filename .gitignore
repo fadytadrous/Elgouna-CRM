@@ -4,3 +4,4 @@ node_modules
 /playwright/.cache/
 auth.json
 /tests/login.js
+test-results

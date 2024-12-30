@@ -15,6 +15,7 @@ export class PropertyPage {
     readonly project: Locator;
     readonly phase: Locator;
     readonly propertyPurpose: Locator;
+    readonly saveBtn: Locator;
     
     
     
