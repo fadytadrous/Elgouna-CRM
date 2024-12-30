@@ -14,6 +14,7 @@ export class CasePage {
     readonly saveBtn: Locator;
     readonly slaTab: Locator;
     readonly slaItem: Locator;
+    readonly slaSection: Locator;
     
     //constructor
     constructor(page: Page){
@@ -27,7 +28,12 @@ export class CasePage {
         this.caseSubCategory = this.page.locator('[data-id="odh_casesubcategory.fieldControl-LookupResultsDropdown_odh_casesubcategory_textInputBox_with_filter_new"]');
         this.description = this.page.locator('[data-id="description.fieldControl-text-box-text"]');
         this.saveBtn = this.page.getByLabel('Save (CTRL+S)');
-        this.slaItem = this.page.locator('a.ms-Link').nth(1);
+        
+        // Locate the section tag by role and label
+        this.slaSection = page.getByRole('region', { name: 'SLA KPI Instance' });
+        // Define the child locator for the second link
+        this.slaItem = this.slaSection.getByRole('link').nth(1);
+        
     }
 
     //methods

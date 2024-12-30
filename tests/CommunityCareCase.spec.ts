@@ -1,7 +1,8 @@
-import { test, expect } from "./fixtures/sharedFixture.ts";
+import { test} from "./fixtures/sharedFixture.ts";
 const { urls } = require('../config/urls.ts');
 import { navBarSelectors } from "../Pages/common/commonSelectors.ts";
 import CasePage from "../Pages/community care/case-page.ts";
+import { expect } from "@playwright/test";
 
 let casePage: CasePage;
 
@@ -9,8 +10,6 @@ test.beforeEach( async({page}) => {
     await page.goto(urls.oWestNewCase, { waitUntil: 'domcontentloaded' });
     //new case page 
     casePage = new CasePage(page);
-    // await page.waitForTimeout(100000); // Wait for 100 seconds
-    // await navBarSelectors.copilotTab(page).click({ timeout: 35000 });
 })
 
 test.describe('Validate that user can create a new case', () => {
@@ -19,7 +18,7 @@ test.describe('Validate that user can create a new case', () => {
     test('Create general case', async ({ page }) => { 
         // Set test to run in slow mode for stability
         test.slow(); 
-        
+        // make it as a method to be called in the test
         // Wait for search icon to be visible (ensures page is loaded)
         await navBarSelectors.searchIcon(page).waitFor();
 
@@ -37,12 +36,15 @@ test.describe('Validate that user can create a new case', () => {
         // Save the case
         await casePage.saveBtn.click();
 
+       
         // Navigate to SLA tab
         await casePage.slaTab.click();
 
-        // Assertion for slaItem
-        const slaItemLabel = await casePage.slaItem.innerText();
-        await expect(slaItemLabel).toHaveText('General Case SLA');
+        // Wait for a specific element in the SLA tab to be visible
+        await casePage.slaSection.waitFor();
+        
+        // Check if the SLA item is displayed
+        await expect(casePage.slaItem).toContainText('General Case SLA');
 
     });
 });
