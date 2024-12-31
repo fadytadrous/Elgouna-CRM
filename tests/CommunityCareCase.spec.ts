@@ -26,11 +26,11 @@ test.describe('Validate that SLA is working for community care', () => {
                 await navBarSelectors.searchIcon(page).waitFor();
 
                 // Fill in the Summary tab information
-                await casePage.summaryTab.click();
+                // await casePage.summaryTab.click();
                 await casePage.selectItemFromDropdown(casePage.requestType, 1);
                 await casePage.selectItemFromLookup(casePage.caseCategory, sharedCaseCat);
                 await casePage.selectItemFromLookup(casePage.caseSubCategory, subCategories);
-                await casePage.fillItem(casePage.description, 'test description');
+                await casePage.fillItem(casePage.description, `test description-${Math.floor(Math.random() * 1000)}`);
 
                 // Select unit and customer details
                 await casePage.selectItemFromLookup(casePage.unitId, '128');
