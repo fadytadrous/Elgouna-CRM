@@ -1,8 +1,6 @@
 const { chromium } = require('playwright');
 const { urls } = require('../config/urls.ts');
 require('dotenv').config();
-console.log('USERNAME:', process.env.USERNAME);
-console.log('PASSWORD:', process.env.PASSWORD);
 
 (async () => {
   const browser = await chromium.launch({ headless: false });
