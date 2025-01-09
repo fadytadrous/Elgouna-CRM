@@ -28,7 +28,7 @@ test.describe('Validate that SLA is working for community care', () => {
                 // Fill in the Summary tab information
                 // await casePage.summaryTab.click();
                 await casePage.selectItemFromDropdown(casePage.requestType, 1);
-                await casePage.selectItemFromLookup(casePage.caseCategory, sharedCaseCat);
+                // await casePage.selectItemFromLookup(casePage.caseCategory, sharedCaseCat);
                 await casePage.selectItemFromLookup(casePage.caseSubCategory, subCategories);
                 await casePage.fillItem(casePage.description, `test description-${Math.floor(Math.random() * 1000)}`);
 
