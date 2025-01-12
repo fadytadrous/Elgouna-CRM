@@ -32,13 +32,13 @@ This repository contains the Customer Relationship Management (CRM) system for O
     ```bash
     node tests/login.js
     ```
-    This will create an [auth.json](http://_vscodecontentref_/2) file that stores cookies and session storage for login to avoid logging in between tests.
+    This will create an [auth.json](https://github.com/your-org/Elgouna-CRM/blob/main/auth.json) file that stores cookies and session storage for login to avoid logging in between tests.
 
 5. Run the Community Care Case spec test cases
     ```bash
     npx playwright test tests/CommunityCareCase.spec.ts
     ```
-    This will cover all the SLAs in the Owest community care project. You can test a certain SLA by commenting out the SLAs in the [testData.ts](http://_vscodecontentref_/3) file.
+    This will cover all the SLAs in the Owest community care project. You can test a certain SLA by commenting out the SLAs in the [testData.ts](https://github.com/fadytadrous/Elgouna-CRM/blob/main/config/testData.ts) file.
 
 ## Project Structure
 - **Playwright JS**: This project uses Playwright for end-to-end testing.
@@ -51,16 +51,11 @@ After running the tests, you will find a report in the [playwright-report](http:
 For common fixtures, please refer to the `sharedFixture.ts` file.
 
 ## Common Selectors and Methods
-Any common selectors or methods are added in the [commonSelectors.ts](http://_vscodecontentref_/5) file.
+Any common selectors or methods are added in the [commonSelectors.ts](https://github.com/fadytadrous/Elgouna-CRM/blob/main/Pages/common/commonSelectors.ts) file.
 
 ## URLs
-All URLs are added in the [urls.ts](http://_vscodecontentref_/6) file to avoid code repetition.
+All URLs are added in the [urls.ts](https://github.com/fadytadrous/Elgouna-CRM/blob/main/config/urls.ts) file to avoid code repetition.
 
-## Documentation
-For detailed documentation, please refer to the `/docs` directory.
-
-## Contributing
-Please read our contributing guidelines before submitting pull requests.
 
 ## Support
-For support inquiries, please contact the development team.
+For support inquiries, please contact me, [Fady Tadrous](https://www.linkedin.com/in/fady-tadrous/).
